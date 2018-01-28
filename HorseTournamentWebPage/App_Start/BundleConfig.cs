@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace WebApplication6
+namespace HorseTournamentWebPage
 {
     public class BundleConfig
     {

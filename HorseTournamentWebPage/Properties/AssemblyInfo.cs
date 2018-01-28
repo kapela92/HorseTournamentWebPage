@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Informacje ogólne o zestawie zależą od poniższego
 // zestawu atrybutów. Zmień wartości tych atrybutów, aby zmodyfikować informacje
 // związane z zestawem.
-[assembly: AssemblyTitle("WebApplication6")]
+[assembly: AssemblyTitle("HorseTournamentWebPage")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("WebApplication6")]
+[assembly: AssemblyProduct("HorseTournamentWebPage")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

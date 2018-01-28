@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace WebApplication6.Controllers
+namespace HorseTournamentWebPage.Controllers
 {
     public class HomeController : Controller
     {
