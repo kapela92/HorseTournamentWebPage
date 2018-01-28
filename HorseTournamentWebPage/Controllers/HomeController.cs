@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data;
+using System.Configuration;
+using MySql.Data.MySqlClient;
+using HorseTournamentWebPage.Models;
 
 namespace HorseTournamentWebPage.Controllers
 {
@@ -15,14 +19,14 @@ namespace HorseTournamentWebPage.Controllers
 
         public ActionResult Results()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Tu bedą wyniki";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Kontakt";
 
             return View();
         }
@@ -35,8 +39,26 @@ namespace HorseTournamentWebPage.Controllers
 
         public ActionResult Players()
         {
-            
-            return View();
+            List<PlayerModel> player = new List<PlayerModel>();
+            string constructor = ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;
+            MySqlConnection connector = new MySqlConnection(constructor);
+            string query = "SELECT * FROM Players";
+            MySqlCommand command = new MySqlCommand(query);
+            command.Connection = connector;
+            connector.Open();
+            MySqlDataReader datareader = command.ExecuteReader();
+            while (datareader.Read())
+            {
+                player.Add(new PlayerModel
+                {
+                    id = Convert.ToInt32(datareader["id"]),
+                    name = datareader["name"].ToString(),
+                    surname =datareader["surname"].ToString(),
+                    birth=datareader["birth"].ToString()
+                });
+            }
+            connector.Close();
+            return View(player);
         }
 
         public ActionResult Horses()

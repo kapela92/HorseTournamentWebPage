@@ -1,5 +1,13 @@
 ﻿@{
     ViewBag.Title = "Zawodnicy";
 }
+
+@model IEnumerable<HorseTournamentWebPage.Models.PlayerModel>
 <h2>@ViewBag.Title</h2>
 
+<ul>
+    @foreach (var p in Model)
+    {
+        <li>@Html.ActionLink(p.name+" "+p.surname,"PlayerResults","Home")</li>
+    }
+</ul>
