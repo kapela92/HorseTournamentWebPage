@@ -63,8 +63,27 @@ namespace HorseTournamentWebPage.Controllers
 
         public ActionResult Horses()
         {
-            
-            return View();
+            List<HorseModel> horse = new List<HorseModel>();
+            string constructor = ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;
+            MySqlConnection connector = new MySqlConnection(constructor);
+            string query = "SELECT * FROM Horses";
+            MySqlCommand command = new MySqlCommand(query);
+            command.Connection = connector;
+            connector.Open();
+            MySqlDataReader datareader = command.ExecuteReader();
+            while (datareader.Read())
+            {
+                horse.Add(new HorseModel
+                {
+                    id = Convert.ToInt32(datareader["id"]),
+                    name = datareader["name"].ToString(),
+                    year = datareader["year"].ToString(),
+                    mother = datareader["mother"].ToString(),
+                    father = datareader["father"].ToString()
+                });
+            }
+            connector.Close();
+            return View(horse);
         }
     }
 }
