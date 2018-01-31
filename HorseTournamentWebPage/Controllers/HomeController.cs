@@ -123,7 +123,7 @@ namespace HorseTournamentWebPage.Controllers
                     id = Convert.ToInt32(datareader["id"]),
                     name = datareader["name"].ToString(),
                     surname =datareader["surname"].ToString(),
-                    birth=datareader["birth"].ToString().Remove(10, 9)
+                    birth=datareader["birth"].ToString().Remove(10, 12)
                 });
             }
             connector.Close();
@@ -173,7 +173,7 @@ namespace HorseTournamentWebPage.Controllers
                     tournament = datareader["tournament"].ToString(),
                     location = datareader["Stud"].ToString(),
                     player = datareader["Name"].ToString(),
-                    date = datareader["Date"].ToString().Remove(10, 9),
+                    date = datareader["Date"].ToString().Remove(10, 12),
                     type = datareader["Type"].ToString(),
                     position = Convert.ToInt32(datareader["Position"])
                 });
@@ -200,7 +200,7 @@ namespace HorseTournamentWebPage.Controllers
                     tournament = datareader["tournament"].ToString(),
                     location = datareader["Stud"].ToString(),
                     horse = datareader["Name"].ToString() + " " + datareader["Surname"].ToString(),
-                    date = datareader["Date"].ToString().Remove(10,9),
+                    date = datareader["Date"].ToString().Remove(10,12),
                     type = datareader["Type"].ToString(),
                     position = Convert.ToInt32(datareader["Position"])
                 });
