@@ -18,7 +18,7 @@ namespace HorseTournamentWebPage.Controllers
         }
 
         public ActionResult PreResults()
-        {
+        {           
             List<ResultModel> Results = new List<ResultModel>();
             string constructor = ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;
             MySqlConnection connector = new MySqlConnection(constructor);
@@ -33,7 +33,7 @@ namespace HorseTournamentWebPage.Controllers
                 {
                     tournament = datareader["Name"].ToString(),
                     location = datareader["Stud"].ToString(),
-                    date = datareader["Date"].ToString().Remove(10, 9)                   
+                    date = datareader["Date"].ToString()
                 });
             }
             connector.Close();           
@@ -95,7 +95,7 @@ namespace HorseTournamentWebPage.Controllers
                 });
             }
             datareader.Close();
-            query = "SELECT Name,Pleace,Date FROM TimeLimit WHERE DATE='" + DateTime.Today.ToString().Remove(10, 9) + "'";
+            query = "SELECT Name,Pleace,Date FROM TimeLimit WHERE DATE='" + DateTime.Now.Date.ToString().Remove(10, 9) + "'";
             command = new MySqlCommand(query);
             command.Connection = connector;
             datareader = command.ExecuteReader();
@@ -173,7 +173,7 @@ namespace HorseTournamentWebPage.Controllers
                     tournament = datareader["tournament"].ToString(),
                     location = datareader["Stud"].ToString(),
                     player = datareader["Name"].ToString(),
-                    date = datareader["Date"].ToString().Remove(10, 9),
+                    date = datareader["Date"].ToString(),
                     type = datareader["Type"].ToString(),
                     position = Convert.ToInt32(datareader["Position"])
                 });
@@ -200,7 +200,7 @@ namespace HorseTournamentWebPage.Controllers
                     tournament = datareader["tournament"].ToString(),
                     location = datareader["Stud"].ToString(),
                     horse = datareader["Name"].ToString() + " " + datareader["Surname"].ToString(),
-                    date = datareader["Date"].ToString().Remove(10,9),
+                    date = datareader["Date"].ToString(),
                     type = datareader["Type"].ToString(),
                     position = Convert.ToInt32(datareader["Position"])
                 });
