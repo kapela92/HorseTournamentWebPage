@@ -123,7 +123,7 @@ namespace HorseTournamentWebPage.Controllers
                     id = Convert.ToInt32(datareader["id"]),
                     name = datareader["name"].ToString(),
                     surname =datareader["surname"].ToString(),
-                    birth=datareader["birth"].ToString().Remove(10, 9)
+                    birth=datareader["birth"].ToString()
                 });
             }
             connector.Close();
