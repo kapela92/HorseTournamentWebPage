@@ -22,4 +22,28 @@ namespace HorseTournamentWebPage.Models
         public string mother { get; set; }
         public string father { get; set; }
     }
+
+    public class ResultModel
+    {
+        public string tournament { get; set; }
+        public string location { get; set; }
+        public string  player { get; set; }
+        public string horse { get; set; }
+        public string date { get; set; }
+        public string type { get; set; }
+        public int position { get; set; }
+        public string time { get; set; }
+        public int points { get; set; }
+        public int hitt { get; set; }
+    }
+
+    public class StartListModel
+    {         
+        public string player { get; set; }
+        public string horse { get; set; }      
+        public string type { get; set; }        
+        public string time { get; set; }
+        public int points { get; set; }
+        public int hitt { get; set; }
+    }
 }

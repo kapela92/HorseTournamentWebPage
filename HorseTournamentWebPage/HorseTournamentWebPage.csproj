@@ -209,6 +209,9 @@
     <Content Include="Views\Home\Players.cshtml" />
     <Content Include="Views\Home\Horses.cshtml" />
     <Content Include="Views\Home\Tournament.cshtml" />
+    <Content Include="Views\Home\PlayerResults.cshtml" />
+    <Content Include="Views\Home\HorseResults.cshtml" />
+    <Content Include="Views\Home\PreResults.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

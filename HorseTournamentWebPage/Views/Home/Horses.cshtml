@@ -6,6 +6,6 @@
 <ul>
     @foreach (var h in Model)
     {
-        <li>@Html.ActionLink(h.name + " " +h.year, "HorseResults", "Home")</li>
+        <li>@Html.ActionLink(h.name + " " +h.year, "HorseResults", "Home",new { id = h.id,name=h.name },null)</li>
     }
 </ul>

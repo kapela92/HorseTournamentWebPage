@@ -1,0 +1,12 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model IEnumerable<HorseTournamentWebPage.Models.ResultModel>
+    <h2>Wybierz Zawody:</h2>
+<ul>
+    @foreach (var p in Model)
+    {
+        <li>@Html.ActionLink(p.tournament + " " + p.location+" "+p.date, "Results", "Home", new { tournament = p.tournament, location = p.location, date = p.date }, null)</li>
+    }
+</ul>
+

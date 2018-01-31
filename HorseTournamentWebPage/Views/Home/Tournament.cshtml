@@ -1,4 +1,147 @@
 ﻿@{
     ViewBag.Title = "Bierzące Zawody";
 }
-<h2>@ViewBag.Title</h2>
+
+@model IEnumerable<HorseTournamentWebPage.Models.ResultModel>
+
+<h2>@ViewBag.tournament</h2>
+
+<ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#Debiuts">Debiuty</a></li>
+    <li><a data-toggle="tab" href="#MiniLL">MiniLL</a></li>
+    <li><a data-toggle="tab" href="#LL">LL</a></li>
+    <li><a data-toggle="tab" href="#L">L</a></li>
+    <li><a data-toggle="tab" href="#L1">L1</a></li>
+</ul>
+<div class="tab-content">
+    <div id="Debiuts" class="tab-pane fade in active">
+        <table class="table table-striped table-hover">
+            <tr>
+                <th>L.p.</th>
+                <th>Zawodnik</th>
+                <th>Koń</th>
+                <th>Czas</th>
+                <th>Punkty</th>
+            </tr>
+            @{int i = 1; }
+            @foreach (var r in Model)
+            {
+                if (r.type == "Debiut")
+                {
+                    <tr>
+                        <td>@i</td>
+                        <td>@r.player</td>
+                        <td>@r.horse</td>
+                        <td>@r.time</td>
+                        <td>@r.points</td>
+                    </tr>
+                    i++;
+                }
+            }
+        </table>
+    </div>
+    <div id="MiniLL" class="tab-pane fade">
+        <table class="table table-striped table-hover">
+            <tr>
+                <th>L.p.</th>
+                <th>Zawodnik</th>
+                <th>Koń</th>
+                <th>Czas</th>
+                <th>Punkty</th>
+            </tr>
+            @{i = 1; }
+            @foreach (var r in Model)
+            {
+                if (r.type == "MiniLL")
+                {
+                    <tr>
+                        <td>@i</td>
+                        <td>@r.player</td>
+                        <td>@r.horse</td>
+                        <td>@r.time</td>
+                        <td>@r.points</td>
+                    </tr>
+                    i++;
+                }
+            }
+        </table>
+    </div>
+    <div id="LL" class="tab-pane fade">
+        <table class="table table-striped table-hover">
+            <tr>
+                <th>L.p.</th>
+                <th>Zawodnik</th>
+                <th>Koń</th>
+                <th>Czas</th>
+                <th>Punkty</th>
+            </tr>
+            @{i = 1; }
+            @foreach (var r in Model)
+            {
+                if (r.type == "LL")
+                {
+                    <tr>
+                        <td>@i</td>
+                        <td>@r.player</td>
+                        <td>@r.horse</td>
+                        <td>@r.time</td>
+                        <td>@r.points</td>
+                    </tr>
+                    i++;
+                }
+            }
+        </table>
+    </div>
+    <div id="L" class="tab-pane fade">
+        <table class="table table-striped table-hover">
+            <tr>
+                <th>L.p.</th>
+                <th>Zawodnik</th>
+                <th>Koń</th>
+                <th>Czas</th>
+                <th>Punkty</th>
+            </tr>
+            @{i = 1; }
+            @foreach (var r in Model)
+            {
+                if (r.type == "L")
+                {
+                    <tr>
+                        <td>@i</td>
+                        <td>@r.player</td>
+                        <td>@r.horse</td>
+                        <td>@r.time</td>
+                        <td>@r.points</td>
+                    </tr>
+                    i++;
+                }
+            }
+        </table>
+    </div>
+    <div id="L1" class="tab-pane fade">
+        <table class="table table-striped table-hover">
+            <tr>
+                <th>L.p.</th>
+                <th>Zawodnik</th>
+                <th>Koń</th>
+                <th>Czas</th>
+                <th>Punkty</th>
+            </tr>
+            @{i = 1; }
+            @foreach (var r in Model)
+            {
+                if (r.type == "L1")
+                {
+                    <tr>
+                        <td>@i</td>
+                        <td>@r.player</td>
+                        <td>@r.horse</td>
+                        <td>@r.time</td>
+                        <td>@r.points</td>
+                    </tr>
+                    i++;
+                }
+            }
+        </table>
+    </div>
+</div>
