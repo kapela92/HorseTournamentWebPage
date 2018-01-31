@@ -33,7 +33,7 @@ namespace HorseTournamentWebPage.Controllers
                 {
                     tournament = datareader["Name"].ToString(),
                     location = datareader["Stud"].ToString(),
-                    date = datareader["Date"].ToString().Remove(10, 9)                   
+                    date = datareader["Date"].ToString().Remove(10, 12)                   
                 });
             }
             connector.Close();           
@@ -95,7 +95,7 @@ namespace HorseTournamentWebPage.Controllers
                 });
             }
             datareader.Close();
-            query = "SELECT Name,Pleace,Date FROM TimeLimit WHERE DATE='" + DateTime.Today.ToString().Remove(10, 9) + "'";
+            query = "SELECT Name,Pleace,Date FROM TimeLimit WHERE DATE='" + DateTime.Today.ToString().Remove(10, 12) + "'";
             command = new MySqlCommand(query);
             command.Connection = connector;
             datareader = command.ExecuteReader();
