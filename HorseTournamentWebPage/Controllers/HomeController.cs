@@ -33,7 +33,7 @@ namespace HorseTournamentWebPage.Controllers
                 {
                     tournament = datareader["Name"].ToString(),
                     location = datareader["Stud"].ToString(),
-                    date = datareader["Date"].ToString()
+                    date = Convert.ToDateTime(datareader["Date"]).ToString("yyyy-MM-dd")
                 });
             }
             connector.Close();           
@@ -95,14 +95,14 @@ namespace HorseTournamentWebPage.Controllers
                 });
             }
             datareader.Close();
-            query = "SELECT Name,Pleace,Date FROM TimeLimit WHERE DATE='" + DateTime.Now.Date.ToString().Remove(10, 9) + "'";
+            query = "SELECT Name,Pleace,Date FROM TimeLimit WHERE DATE='" + DateTime.Now.Date.ToString("yyy-MM-dd") + "'";
             command = new MySqlCommand(query);
             command.Connection = connector;
             datareader = command.ExecuteReader();
             while (datareader.Read())
-            ViewBag.tournament = datareader["Name"].ToString() + " " + datareader["Pleace"].ToString() + " " + datareader["Date"].ToString();
-                
-            connector.Close();
+            ViewBag.tournament= datareader["Name"].ToString() + " " + datareader["Pleace"].ToString() + " " + datareader["Date"].ToString();
+               
+            connector.Close(); 
             return View(Results);
         }
 
@@ -123,7 +123,7 @@ namespace HorseTournamentWebPage.Controllers
                     id = Convert.ToInt32(datareader["id"]),
                     name = datareader["name"].ToString(),
                     surname =datareader["surname"].ToString(),
-                    birth=datareader["birth"].ToString()
+                    birth= Convert.ToDateTime(datareader["birth"]).ToString("yyyy-MM-dd")
                 });
             }
             connector.Close();
@@ -173,7 +173,7 @@ namespace HorseTournamentWebPage.Controllers
                     tournament = datareader["tournament"].ToString(),
                     location = datareader["Stud"].ToString(),
                     player = datareader["Name"].ToString(),
-                    date = datareader["Date"].ToString(),
+                    date = Convert.ToDateTime(datareader["Date"]).ToString("yyyy-MM-dd"),
                     type = datareader["Type"].ToString(),
                     position = Convert.ToInt32(datareader["Position"])
                 });
@@ -200,7 +200,7 @@ namespace HorseTournamentWebPage.Controllers
                     tournament = datareader["tournament"].ToString(),
                     location = datareader["Stud"].ToString(),
                     horse = datareader["Name"].ToString() + " " + datareader["Surname"].ToString(),
-                    date = datareader["Date"].ToString(),
+                    date = Convert.ToDateTime(datareader["Date"]).ToString("yyyy-MM-dd"),
                     type = datareader["Type"].ToString(),
                     position = Convert.ToInt32(datareader["Position"])
                 });
