@@ -44,6 +44,6 @@ namespace HorseTournamentWebPage.Models
         public string type { get; set; }        
         public string time { get; set; }
         public int points { get; set; }
-        public int hitt { get; set; }
+        public int hundredth { get; set; }
     }
 }

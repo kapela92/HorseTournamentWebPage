@@ -1,8 +1,11 @@
 ﻿@{
-    ViewBag.Title = "Bierzące Zawody";
-}
+        ViewBag.Title = "Bierzące Zawody";
+        string[] wyg= { "","","","",""};
+        int i = 1;
+        int h = 0;
+    }
 
-@model IEnumerable<HorseTournamentWebPage.Models.ResultModel>
+    @model IEnumerable<HorseTournamentWebPage.Models.StartListModel>
 
 <h2>@ViewBag.tournament</h2>
 
@@ -15,32 +18,46 @@
 </ul>
 <div class="tab-content">
     <div id="Debiuts" class="tab-pane fade in active">
-        <table class="table table-striped table-hover">
-            <tr>
-                <th>L.p.</th>
-                <th>Zawodnik</th>
-                <th>Koń</th>
-                <th>Czas</th>
-                <th>Punkty</th>
-            </tr>
-            @{int i = 1; }
-            @foreach (var r in Model)
-            {
-                if (r.type == "Debiut")
+        <h3>Limit Czasu: @ViewBag.LimitDebiut</h3>       
+            <h1></h1>
+            <table class="table table-striped table-hover">
+                <tr>
+                    <th>L.p.</th>
+                    <th>Zawodnik</th>
+                    <th>Koń</th>
+                    <th>Czas</th>
+                    <th>Punkty</th>
+                </tr>
+                @{i = 1;h = 0;}
+                @foreach (var r in Model)
                 {
-                    <tr>
-                        <td>@i</td>
-                        <td>@r.player</td>
-                        <td>@r.horse</td>
-                        <td>@r.time</td>
-                        <td>@r.points</td>
-                    </tr>
-                    i++;
+                    if (r.type == "Debiut")
+                    {
+                        if (h < r.hundredth)
+                        {
+                            wyg[0] = Convert.ToString(i);
+                            wyg[1] = r.player;
+                            wyg[2] = r.horse;
+                            wyg[3] = r.time;
+                            wyg[4] = Convert.ToString(r.points);
+                            h = r.hundredth;
+                            <h3>Obecnie wygrywa:   @wyg[1] i  @wyg[2] </h3>
+                            <h3>Lista startowa: </h3>
+                        }
+                        <tr>
+                            <td>@i</td>
+                            <td>@r.player</td>
+                            <td>@r.horse</td>
+                            <td>@r.time</td>
+                            <td>@r.points</td>
+                        </tr>
+                        i++;
+                    }
                 }
-            }
-        </table>
-    </div>
+            </table>
+</div>
     <div id="MiniLL" class="tab-pane fade">
+        <h3>Limit Czasu: @ViewBag.LimitMiniLL</h3>                          
         <table class="table table-striped table-hover">
             <tr>
                 <th>L.p.</th>
@@ -49,11 +66,23 @@
                 <th>Czas</th>
                 <th>Punkty</th>
             </tr>
-            @{i = 1; }
+            @{i = 1;h = 0; }
             @foreach (var r in Model)
             {
                 if (r.type == "MiniLL")
                 {
+                    if (h < r.hundredth)
+                    {
+                        wyg[0] = Convert.ToString(i);
+                        wyg[1] = r.player;
+                        wyg[2] = r.horse;
+                        wyg[3] = r.time;
+                        wyg[4] = Convert.ToString(r.points);
+                        h = r.hundredth;
+                        <h3>Obecnie wygrywa:   @wyg[1] i  @wyg[2] </h3>
+                        <h3>Lista startowa: </h3>
+                    }
+
                     <tr>
                         <td>@i</td>
                         <td>@r.player</td>
@@ -67,6 +96,7 @@
         </table>
     </div>
     <div id="LL" class="tab-pane fade">
+        <h3>Limit Czasu: @ViewBag.LimitLL</h3>       
         <table class="table table-striped table-hover">
             <tr>
                 <th>L.p.</th>
@@ -75,11 +105,22 @@
                 <th>Czas</th>
                 <th>Punkty</th>
             </tr>
-            @{i = 1; }
+            @{i = 1;h = 0; }
             @foreach (var r in Model)
             {
                 if (r.type == "LL")
                 {
+                    if (h < r.hundredth)
+                    {
+                        wyg[0] = Convert.ToString(i);
+                        wyg[1] = r.player;
+                        wyg[2] = r.horse;
+                        wyg[3] = r.time;
+                        wyg[4] = Convert.ToString(r.points);
+                        h = r.hundredth;
+                        <h3>Obecnie wygrywa:   @wyg[1] i  @wyg[2] </h3>
+                        <h3>Lista startowa: </h3>
+                    }
                     <tr>
                         <td>@i</td>
                         <td>@r.player</td>
@@ -93,6 +134,7 @@
         </table>
     </div>
     <div id="L" class="tab-pane fade">
+        <h3>Limit Czasu: @ViewBag.LimitL</h3>               
         <table class="table table-striped table-hover">
             <tr>
                 <th>L.p.</th>
@@ -101,9 +143,20 @@
                 <th>Czas</th>
                 <th>Punkty</th>
             </tr>
-            @{i = 1; }
+            @{i = 1;h = 0; }
             @foreach (var r in Model)
             {
+                if (h < r.hundredth)
+                {
+                    wyg[0] = Convert.ToString(i);
+                    wyg[1] = r.player;
+                    wyg[2] = r.horse;
+                    wyg[3] = r.time;
+                    wyg[4] = Convert.ToString(r.points);
+                    h = r.hundredth;
+                    <h3>Obecnie wygrywa:   @wyg[1] i  @wyg[2] </h3>
+                    <h3>Lista startowa: </h3>
+                }
                 if (r.type == "L")
                 {
                     <tr>
@@ -119,6 +172,7 @@
         </table>
     </div>
     <div id="L1" class="tab-pane fade">
+        <h3>Limit Czasu: @ViewBag.LimitL1</h3>           
         <table class="table table-striped table-hover">
             <tr>
                 <th>L.p.</th>
@@ -127,11 +181,22 @@
                 <th>Czas</th>
                 <th>Punkty</th>
             </tr>
-            @{i = 1; }
+            @{i = 1;h = 0; }
             @foreach (var r in Model)
             {
                 if (r.type == "L1")
                 {
+                    if (h < r.hundredth)
+                    {
+                        wyg[0] = Convert.ToString(i);
+                        wyg[1] = r.player;
+                        wyg[2] = r.horse;
+                        wyg[3] = r.time;
+                        wyg[4] = Convert.ToString(r.points);
+                        h = r.hundredth;
+                        <h3>Obecnie wygrywa:   @wyg[1] i  @wyg[2] </h3>
+                        <h3>Lista startowa: </h3>
+                    }
                     <tr>
                         <td>@i</td>
                         <td>@r.player</td>

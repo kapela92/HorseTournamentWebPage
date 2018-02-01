@@ -75,33 +75,38 @@ namespace HorseTournamentWebPage.Controllers
 
         public ActionResult Tournament()
         {
-            List<ResultModel> Results = new List<ResultModel>();
+            List<StartListModel> Results = new List<StartListModel>();
             string constructor = ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;
             MySqlConnection connector = new MySqlConnection(constructor);
-            string query = "SELECT S.Time,S.Type,S.Points,S.Hundredth,H.Name as Horse,P.Name as PlayerName,P.Surname as PlayerSurname FROM StartList S, Horses H, Players P WHERE S.PlayerID=P.ID AND S.HorseID=H.ID";
+            string query = "SELECT S.Time,S.Type,S.Points,S.Hundredth,H.Name as Horse,P.Name as PlayerName,P.Surname as PlayerSurname,S.Hundredth FROM StartList S, Horses H, Players P WHERE S.PlayerID=P.ID AND S.HorseID=H.ID";
             MySqlCommand command = new MySqlCommand(query);
             command.Connection = connector;
             connector.Open();
             MySqlDataReader datareader = command.ExecuteReader();
             while (datareader.Read())
             {
-                Results.Add(new ResultModel
+                Results.Add(new StartListModel
                 {                   
                     player = datareader["PlayerName"].ToString()+" "+datareader["PlayerSurname"].ToString(),
                     horse = datareader["Horse"].ToString(),
                     type = datareader["Type"].ToString(),
                     time = datareader["Time"].ToString(),
-                    points = Convert.ToInt32(datareader["Points"])
+                    points = Convert.ToInt32(datareader["Points"]),
+                    hundredth = Convert.ToInt32(datareader["hundredth"])
                 });
             }
             datareader.Close();
-            query = "SELECT Name,Pleace,Date FROM TimeLimit WHERE DATE='" + DateTime.Now.Date.ToString("yyy-MM-dd") + "'";
+            query = "SELECT Name,Pleace,Date,Debiut,Minill,LL,L,L1 FROM TimeLimit WHERE DATE='" + DateTime.Now.Date.ToString("yyy-MM-dd") + "'";
             command = new MySqlCommand(query);
             command.Connection = connector;
             datareader = command.ExecuteReader();
             while (datareader.Read())
             ViewBag.tournament= datareader["Name"].ToString() + " " + datareader["Pleace"].ToString() + " " + datareader["Date"].ToString();
-               
+            ViewBag.LimitDebiut = datareader["Debiut"].ToString();
+            ViewBag.LimitMiniLL = datareader["MiniLL"].ToString();
+            ViewBag.LimitLL = datareader["LL"].ToString();
+            ViewBag.LimitL = datareader["L"].ToString();
+            ViewBag.LimitL1 = datareader["L1"].ToString();
             connector.Close(); 
             return View(Results);
         }
