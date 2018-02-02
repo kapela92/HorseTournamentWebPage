@@ -101,12 +101,14 @@ namespace HorseTournamentWebPage.Controllers
             command.Connection = connector;
             datareader = command.ExecuteReader();
             while (datareader.Read())
-            ViewBag.tournament= datareader["Name"].ToString() + " " + datareader["Pleace"].ToString() + " " + datareader["Date"].ToString();
-            ViewBag.LimitDebiut = datareader["Debiut"].ToString();
-            ViewBag.LimitMiniLL = datareader["MiniLL"].ToString();
-            ViewBag.LimitLL = datareader["LL"].ToString();
-            ViewBag.LimitL = datareader["L"].ToString();
-            ViewBag.LimitL1 = datareader["L1"].ToString();
+            {
+                ViewBag.tournament = datareader["Name"].ToString() + " " + datareader["Pleace"].ToString() + " " + datareader["Date"].ToString();
+                ViewBag.LimitDebiut = datareader["Debiut"].ToString();
+                ViewBag.LimitMiniLL = datareader["MiniLL"].ToString();
+                ViewBag.LimitLL = datareader["LL"].ToString();
+                ViewBag.LimitL = datareader["L"].ToString();
+                ViewBag.LimitL1 = datareader["L1"].ToString();
+            }
             connector.Close(); 
             return View(Results);
         }
